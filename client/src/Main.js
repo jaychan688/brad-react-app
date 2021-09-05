@@ -33,6 +33,7 @@ function Main() {
 			username: localStorage.getItem('complexappUsername'),
 			avatar: localStorage.getItem('complexappAvatar'),
 		},
+		isSearchOpen: false,
 	}
 
 	// Reducer: keep all logic in one centrally located place
@@ -47,6 +48,12 @@ function Main() {
 				return
 			case 'flashMessage':
 				draft.flashMessages.push(action.value)
+				return
+			case 'openSearch':
+				draft.isSearchOpen = true
+				return
+			case 'closeSearch':
+				draft.isSearchOpen = false
 				return
 		}
 	}
