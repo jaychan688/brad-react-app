@@ -26,6 +26,7 @@ const Profile = () => {
 			counts: { postCount: '', followerCount: '', followingCount: '' },
 		},
 	})
+
 	useEffect(() => {
 		const ourRequest = Axios.CancelToken.source()
 
@@ -47,6 +48,7 @@ const Profile = () => {
 		return () => {
 			ourRequest.cancel()
 		}
+		// rerun every time the username is changes
 	}, [username])
 
 	useEffect(() => {
@@ -140,6 +142,7 @@ const Profile = () => {
 							Follow <i className="fas fa-user-plus"></i>
 						</button>
 					)}
+				{/* Already follows, show stop following button */}
 				{appState.loggedIn &&
 					state.profileData.isFollowing &&
 					appState.user.username != state.profileData.profileUsername &&
